@@ -2,6 +2,10 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
+// use \CloudCreativity\LaravelJsonApi\Resolver\
+// use App\http\Controllers\Api\V1\FacController;
+// use LaravelJsonApi\Laravel\Http\Controllers\JsonApiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +18,54 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+// Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
+Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request;
 });
+
+// Route::get('facs', function() {
+    
+//     return Facs::all();
+// });
+
+
+// Route::group([
+//     'middleeare' => 'api',
+//     'prefix' => 'fac',    
+// ], function ($source){
+    // Route::get('list', 'FacController@index');
+    // Route::get('show/{id}', 'FacController@show');
+    // Route::post('new', 'FacController@store');
+    // Route::put('edit/{id}', 'FacController@update');
+    // Route::delete('delete{id}', 'FacController@delete');
+
+
+// });
+
+
+
+// JsonApi::register('default')->routes(function ($api){ 
+//     $api->resource('facs', FastController::class);
+// });
+
+
+ 
+Route::get('hi', function(){
+    return "holi";
+});
+
+JsonApi::register('default')->withNamespace('api')->routes(function($api){
+// ->withNamespace('api')
+    $api->resource('facs');
+});
+
+
+// JsonApiRoute::server('v1')
+// ->prefix('v1')
+// // ->namespace('Api\V1')
+// ->resources(function($server){
+//     $server->resource('facs', FacController::class);
+// });
