@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
@@ -23,7 +24,7 @@ use CloudCreativity\LaravelJsonApi\Facades\JsonApi;
 // });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request;
+   return $request;
 });
 
 // Route::get('facs', function() {
@@ -53,14 +54,39 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
  
-Route::get('hi', function(){
-    return "holi";
-});
+// Route::get('hi', function(){
+//     return "holi";
+// });
 
-JsonApi::register('default')->withNamespace('api')->routes(function($api){
+// Route::get('log', function(){
+//     return "hola ";
+// });
+
+
+// Route::get('jdjd', function(){
+//     return "eee";
+// });
+/*JsonApi::registe0r('default')->withNamespace('api')->routes(function($api){
 // ->withNamespace('api')
     $api->resource('facs');
+});*/
+
+
+Route::group([
+   'prefix' => 'auth'
+], function () {
+    Route::post('login', [AuthController::class, 'login']);
+
+    Route::post('signup', [AuthController::class, 'signUp']);
+
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('logout', [AuthController::class, 'logout']);
+        Route::get('userA', [AuthController::class, 'user']);
+    });
 });
+
 
 
 // JsonApiRoute::server('v1')
