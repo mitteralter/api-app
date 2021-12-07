@@ -52,7 +52,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // });
 
 
- 
+  
 Route::get('hi', function(){
     return "holi";
 });
