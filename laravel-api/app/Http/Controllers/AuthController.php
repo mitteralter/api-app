@@ -20,13 +20,15 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|string|email|unique:users',
-            'password' => 'required|string'
+            'password' => 'required|string',
+            'state_id' => 'integer'
         ]);
 
         User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'state_id' => $request->state_id,
         ]);
 
         return response()->json([
@@ -67,6 +69,9 @@ class AuthController extends Controller
             'expires_at' => Carbon::parse($token->expires_at)->toDateTimeString()
         ]);
     }
+
+
+   
 
     /**
      * Cierre de sesión (anular el token)

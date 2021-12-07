@@ -9,5 +9,14 @@ class Fac extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['rfc'];
+    protected $fillable = ['rfc', "user_id"];
+    
+
+    // $facs = Post::find(1)->facs;
+    // foreach ($facs as $fac) {
+    //     //
+    // }
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

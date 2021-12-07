@@ -68,6 +68,8 @@ return [
     'resources' => [
         // 'posts' => \App\Post::class,
         'facs' => \App\Models\Fac::class,
+        'estados' => \App\Models\Estado::class,
+      
     ],
 
     /*
@@ -162,6 +164,7 @@ return [
     */
     'encoding' => [
         'application/vnd.api+json',
+        
     ],
 
     /*

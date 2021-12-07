@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateFacsTable extends Migration
+class CreateEstadosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateFacsTable extends Migration
      */
     public function up()
     {
-        Schema::create('facs', function (Blueprint $table) {
+        Schema::create('estados', function (Blueprint $table) {
             $table->id();
-            $table->string('rfc');
-            $table->bigInteger('user_id')->nullable();
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ class CreateFacsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('facs');
+        Schema::dropIfExists('estados');
     }
 }
