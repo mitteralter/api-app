@@ -1,6 +1,6 @@
 <?php
 
-namespace App\JsonApi\Facs;
+namespace App\JsonApi\Estados;
 
 use CloudCreativity\LaravelJsonApi\Eloquent\AbstractAdapter;
 use CloudCreativity\LaravelJsonApi\Pagination\StandardStrategy;
@@ -15,10 +15,7 @@ class Adapter extends AbstractAdapter
      *
      * @var array
      */
-
-
-    protected $filleable = [  'name' => 'name',];
-    protected $attributes = [  'name' => 'name',];
+    protected $attributes = [];
 
     /**
      * Mapping of JSON API filter names to model scopes.
@@ -34,8 +31,7 @@ class Adapter extends AbstractAdapter
      */
     public function __construct(StandardStrategy $paging)
     {
-        // parent::__construct(new \App\Fac(), $paging);
-        parent::__construct(new \App\Models\Fac(), $paging);
+        parent::__construct(new \App\Models\Estado(), $paging);
     }
 
     /**
@@ -47,8 +43,8 @@ class Adapter extends AbstractAdapter
     {
         $this->filterWithScopes($query, $filters);
     }
-
-    protected function Facs()
+    
+    protected function Estados()
     {
         return $this;
     }

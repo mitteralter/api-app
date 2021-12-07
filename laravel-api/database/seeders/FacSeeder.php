@@ -18,11 +18,11 @@ class FacSeeder extends Seeder
     {
         // $faker = \Faker\Factory::create();
 
-        Fac::create(
-            [
-                'rfc' => 'rfc5555',
+        // Fac::create(
+        //     [
+        //         'rfc' => 'rfc5555',
             
-            ]);
+        //     ]);
 
 
         
